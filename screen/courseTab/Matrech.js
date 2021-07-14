@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 
 import { List } from "react-native-paper";
 
-const Matrech = () => {
+const Matrech = ({ navigation}) => {
   const [expanded, setExpanded] = useState(true);
 
   const handlePress = () => setExpanded(!expanded);
@@ -17,7 +17,7 @@ const Matrech = () => {
         >
           <List.Item title="First item" />
           <List.Item title="Second item" />
-          <List.Item title="Third item" />
+          <List.Item title="Third item" onPress={()=>navigation.navigate('SingleCourse',{title:'Course test'})} />
         </List.Accordion>
 
         <List.Accordion
