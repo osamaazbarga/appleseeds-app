@@ -5,7 +5,9 @@ import Home from "../screen/Home";
 import Setting from "../screen/Setting";
 import Icon from "react-native-vector-icons/Ionicons";
 import Courses from "../screen/Courses";
-import SingleCourse from "../screen/SingleCourseScreen";
+import SingleCourseForGuide from '../screen/guideCourse/SingleCourse'
+import SingleCourseForStudent from '../screen/studentCourse/SingleCourse'
+
 
 // const Stack = createStackNavigator();
 const screenOptionStyle = {
@@ -30,7 +32,7 @@ const ProfileStack = ({ navigation }) => {
         options={{
           headerTitleStyle: { alignSelf: "flex-end" },
           title: "הפרופיל שלי",
-          headerRight: () => (
+          headerLeft: () => (
             <Icon.Button
               name="ios-menu"
               size={25}
@@ -45,41 +47,19 @@ const ProfileStack = ({ navigation }) => {
     </Stack.Navigator>
   );
 };
-// const SingleCourseStack = ({ navigation }) => {
-//   return (
-//     <Stack.Navigator screenOptions={screenOptionStyle}>
-//       <Stack.Screen
-//         name="SingleCourse"
-//         component={SingleCourseScreen}
-//         options={{
-//           headerTitleStyle: { alignSelf: "flex-end" },
-//           title: "דף בית",
-//           headerRight: () => (
-//             <Icon.Button
-//               name="ios-menu"
-//               size={25}
-//               backgroundColor="#4a90e2"
-//               onPress={() => {
-//                 navigation.openDrawer();
-//               }}
-//             ></Icon.Button>
-//           ),
-//         }}
-//       />
-//     </Stack.Navigator>
-//   );
-// };
 
-const CoursesStack = ({ navigation }) => {
+
+
+const SingleCourseGuideStack = ({ route,navigation }) => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen
-        name="Courses"
-        component={Courses}
+        name="SingleCourseForGuide"
+        component={SingleCourseForGuide}
         options={{
           headerTitleStyle: { alignSelf: "flex-end" },
-          title: "קורסים",
-          headerRight: () => (
+          title: route.params.coursename,
+          headerLeft: () => (
             <Icon.Button
               name="ios-menu"
               size={25}
@@ -91,13 +71,46 @@ const CoursesStack = ({ navigation }) => {
           ),
         }}
       />
+    </Stack.Navigator>
+  );
+};
+
+const SingleCourseStudentStack = ({ route,navigation }) => {
+
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen
-        name="SingleCourse"
-        component={SingleCourseScreen}
+        name="SingleCourseForStudent"
+        component={SingleCourseForStudent}
+        options={{
+          headerTitleStyle: { alignSelf: "flex-end" },
+          title: route.params.coursename,
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-menu"
+              size={25}
+              backgroundColor="#4a90e2"
+              onPress={() => {
+                navigation.openDrawer();
+              }}
+            >{console.log("my route",route)}</Icon.Button>
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const CoursesStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen
+        name="Courses"
+        component={Courses}
         options={{
           headerTitleStyle: { alignSelf: "flex-end" },
           title: "קורסים",
-          headerRight: () => (
+          headerLeft: () => (
             <Icon.Button
               name="ios-menu"
               size={25}
@@ -122,7 +135,7 @@ const SettingsStack = ({ navigation }) => {
         options={{
           headerTitleStyle: { alignSelf: "flex-end" },
           title: "הגדרות",
-          headerRight: () => (
+          headerLeft: () => (
             <Icon.Button
               name="ios-menu"
               size={25}
@@ -146,7 +159,7 @@ const HomeStack = ({ navigation }) => {
         options={{
           headerTitleStyle: { alignSelf: "flex-end" },
           title: "דף בית",
-          headerRight: () => (
+          headerLeft: () => (
             <Icon.Button
               name="ios-menu"
               size={25}
@@ -167,5 +180,6 @@ export {
   SettingsStack,
   ProfileStack,
   CoursesStack,
-  SingleCourseStack,
+  SingleCourseGuideStack,
+  SingleCourseStudentStack
 };

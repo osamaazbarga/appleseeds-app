@@ -1,6 +1,7 @@
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { HomeStack, SettingsStack, ProfileStack, CoursesStack } from './MyStack'
+import { HomeStack, SettingsStack, ProfileStack, CoursesStack ,TestStack,SingleCourseGuideStack,SingleCourseStudentStack} from './MyStack'
+
 import DrawerContent from '../screen/DrawerContent';
 import { View, Text } from 'react-native'
 
@@ -15,7 +16,7 @@ import { View, Text } from 'react-native'
 //     </SafeAreaView>
 // }
 const Drawer = createDrawerNavigator()
-const MyDrawer = ({toggleTheme}) => {
+const MyDrawer = () => {
     
     return (
 
@@ -26,7 +27,9 @@ const MyDrawer = ({toggleTheme}) => {
                 <Drawer.Screen name="Profile" component={ProfileStack} />
                 <Drawer.Screen name="Settings" component={SettingsStack} />
                 <Drawer.Screen name="Courses" component={CoursesStack} />
-                {/* <Drawer.Screen name="home" component={Profile}/> */}
+                <Drawer.Screen name="SingleCourseForGuide" component={SingleCourseGuideStack}/>
+                <Drawer.Screen name="SingleCourseForStudent" component={SingleCourseStudentStack}/>
+
 
             </Drawer.Navigator>
 

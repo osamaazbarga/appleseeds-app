@@ -111,8 +111,18 @@ const App = () => {
           userToken=getLoginInfo.token
           emailInDispach=email
           isAdmin=getLoginInfo.isAdmin
-          setUserInfo1(await getMyProfileByToken(getLoginInfo.token))
+          console.log('up the userinfo1');
           await AsyncStorage.setItem('userToken',userToken)
+          let getData=[]
+          console.log('beforegetdata',getData);
+          while(!getData){
+            console.log('getdata',getData);
+            getData=await getMyProfileByToken(getLoginInfo.token)
+          }
+          setUserInfo1(getData)
+          console.log('down the userinfo1',userInfo1);
+
+          
         }
         catch(error){
           console.log('error');
@@ -143,8 +153,11 @@ const App = () => {
       setIsDarkTheme(isDarkTheme=>!isDarkTheme)
     },
     getUserInfo:()=>{
-      console.log("userInfo1",userInfo1);
+        console.log("userInfo1fromget",loginState.userToken);
       return userInfo1
+
+      // console.log("userInfo1fromget",userInfo1);
+      // return userInfo1
     }
   }), [])
   // if (Loading) {
@@ -218,7 +231,7 @@ const App = () => {
     <PaperProvider theme={theme}>
       <AuthContext.Provider value={authContext}>
         <NavigationContainer theme={theme}>
-          {loginState.userToken != null ? (
+          {(loginState.userToken != null) ? (
             <MyDrawer />
           ) :
             <MyRootStack />

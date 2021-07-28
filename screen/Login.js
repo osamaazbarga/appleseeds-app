@@ -8,8 +8,8 @@ import Api from '../components/Api/MainApi'
 import { AuthContext } from '../components/context/Context';
 const Login = ({ navigation }) => {
     const [data, setData] = useState({
-        email: '',
-        password: '',
+        email: 'admin@email.com',
+        password: '1234',
         check_textInputChange: false,
         secureTextEntry: true,
         isValidUser:true,
@@ -113,6 +113,7 @@ const Login = ({ navigation }) => {
                             autoCapitalize="none"
                             onChangeText={(val) => textInputChange(val)}
                             onEndEditing={(e)=>{handleValidUser(e.nativeEvent.text)}}
+                            value='admin@email.com'
                         />
                         {data.check_textInputChange ?
 
@@ -142,6 +143,7 @@ const Login = ({ navigation }) => {
                             style={styles.textInput}
                             autoCapitalize="none"
                             onChangeText={(val) => handlePasswordChange(val)}
+                            value="1234"
 
                         />
                         <TouchableOpacity onPress={updateSecureTextEntry}>

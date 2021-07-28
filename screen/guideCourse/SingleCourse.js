@@ -1,20 +1,23 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-i;
+
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 // ...
 
-const SingleCourseScreen = ({ route, navigation }) => {
-  const { title } = route.params;
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      title,
-    });
-  }, []);
+const SingleCourse = ({navigation,route }) => {
+  // const { title } = route.params;
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     title,
+  //   });
+  // }, []);
   return (
     <View style={styles.container}>
       <ScrollView indicatorStyle="#61B1FF">
+        {
+          console.log("route",route)
+        }
         <View style={styles.section}>
           <Text style={styles.text}>תכנון מפגש הקרוב</Text>
           <Icon name="book-plus" size={30} color={"#61B1FF"} />
@@ -76,4 +79,4 @@ const styles = StyleSheet.create({
   },
   text: { fontSize: 20, marginRight: 15, color: "#61B1FF" },
 });
-export default SingleCourseScreen;
+export default SingleCourse;

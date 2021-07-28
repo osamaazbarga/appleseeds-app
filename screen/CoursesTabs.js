@@ -11,7 +11,7 @@ const Tab = createMaterialTopTabNavigator();
 import { View, Text } from 'react-native'
 
 
-const CoursesTabs = () => {
+const CoursesTabs = ({courses}) => {
     return (
         <Tab.Navigator
             tabBarOptions={{
@@ -35,14 +35,15 @@ const CoursesTabs = () => {
             barStyle={{ backgroundColor: '#000000' }}
         >
             
-            <Tab.Screen
-                name="מדריך"
-                component={Madrech}
-            />
+            
             <Tab.Screen
                 name="משתתף/ת"
-                component={Student}
+                children={()=><Student courses={courses}/>}
                 options={{ tabBarBadge: 3 }}
+            />
+            <Tab.Screen
+                name="מדריך"
+                children={()=><Madrech courses={courses}/>}
             />
         </Tab.Navigator>
     )

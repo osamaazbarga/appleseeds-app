@@ -7,7 +7,7 @@ import {global} from '../styles/global'
 const Home = ({navigation}) => {
     const goToProfile=()=>{
         console.log("osama");
-        navigation.navigate("Profile")
+        navigation.navigate("SingleCourseForStudent")
     }
     return (
     //     <NavigationContainer>
@@ -15,7 +15,7 @@ const Home = ({navigation}) => {
     //   </NavigationContainer>
     <View style={global.container}>
         <Text>Home</Text>
-        <Button title="Go to profile" onPress={()=>console.log('osama')}/>
+        <Button title="Go to SingleCourse" onPress={()=>goToProfile()}/>
     </View>
     )
 }
